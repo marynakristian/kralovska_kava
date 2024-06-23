@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Poloha</title>
+        <link
+            rel="icon"
+            href="{% static 'img/Vector.svg' %}"
+            type="image/x-icon" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <style>
+            #map {
+                height: 400px;
+                width: 100%;
+            }
+        </style>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+            async
+            defer></script>
+        <script>
+            function initMap() {
+                var location = { lat: 50.0755, lng: 14.4378 }; // Пример координат для Праги
+                var map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 15,
+                    center: location,
+                });
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="logo">
+                    Kralovska Kava
+                    <img src="{% static 'img/Vector.svg' %}" alt="Logo" />
+                </div>
+                <div class="menu-container">
+                    <ul>
+                        <li><a href="{% url 'home' %}">O nás</a></li>
+                        <li id="menu-item" class="menu">
+                            <a href="#" id="menu-link">Menu</a>
+                            <ul id="submenu" class="submenu">
+                                <li>
+                                    <a href="{% url 'coffee_list' %}"
+                                        >Nabídka Kávy</a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="{% url 'snack_list' %}"
+                                        >Nabídka Občerstvení</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{% url 'reservations' %}">Rezervace</a>
+                        </li>
+                        <li><a href="{% url 'location' %}">Poloha</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <h1>Poloha</h1>
+            <div id="map"></div>
+        </main>
+        <footer>&copy; 2023 Kralovska Kava</footer>
+    </body>
+</html>

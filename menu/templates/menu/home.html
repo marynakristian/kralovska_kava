@@ -1,0 +1,92 @@
+{% load static %} {% load custom_tags %}
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Kralovska Kava</title>
+        <link
+            rel="icon"
+            href="{% static 'img/Vector.svg' %}"
+            type="image/x-icon" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <nav>
+                    <div class="logo">
+                        Kralovska Kava
+                        <img src="{% static 'img/Vector.svg' %}" alt="Logo" />
+                    </div>
+                    <div class="menu-container">
+                        <ul>
+                            <li><a href="{% url 'home' %}">O nás</a></li>
+                            <li id="menu-item" class="menu">
+                                <a href="#" id="menu-link">Menu</a>
+                                <ul id="submenu" class="submenu">
+                                    <li>
+                                        <a href="{% url 'coffee_list' %}"
+                                            >Nabídka Kávy</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'snack_list' %}"
+                                            >Nabídka Občerstvení</a
+                                        >
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{% url 'reservations' %}">Rezervace</a>
+                            </li>
+                            <li><a href="{% url 'location' %}">Poloha</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <main>
+                <div class="container">
+                    <div class="text-container">
+                        <!-- Добавлен контейнер для текста -->
+                        <h1 class="alupigus">Vítejte v Kralovska Kava</h1>
+                        <p class="description">
+                            Báječné kavárny pro všechny milovníky kávy.
+                        </p>
+                    </div>
+                    <img
+                        class="Background-image"
+                        src="{% static 'img/Rectangle 59.png' %}"
+                        alt="Background-image" />
+                </div>
+
+                <!-- Форма для оставления отзыва -->
+                <div class="review-form">
+                    <h2>Zanechte svou recenzi</h2>
+                    <form method="post">
+                        {% csrf_token %} {{ form.as_p }}
+                        <button type="submit">Poslat</button>
+                    </form>
+                </div>
+
+                <!-- Список отзывов -->
+                <div class="reviews-container">
+                    <h2>Recenze</h2>
+                    <div class="reviews-wrapper">
+                        {% for review in reviews %}
+                        <div class="review">
+                            <p>
+                                <strong>{{ review.name }}</strong> -
+                                {{review.review_date}}
+                            </p>
+                            <p>Hodnocení: {{ review.rating|star_rating }}</p>
+                            <p>{{ review.comment }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </main>
+            <footer>&copy; 2023 Kralovska Kava</footer>
+        </div>
+        <script src="{% static 'js/menu.js' %}"></script>
+    </body>
+</html>

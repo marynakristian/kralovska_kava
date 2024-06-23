@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Rezervace</title>
+        <link
+            rel="icon"
+            href="{% static 'img/Vector.svg' %}"
+            type="image/x-icon" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="logo">
+                    Kralovska Kava
+                    <img src="{% static 'img/Vector.svg' %}" alt="Logo" />
+                </div>
+                <div class="menu-container">
+                    <ul>
+                        <li><a href="{% url 'home' %}">O nás</a></li>
+                        <li id="menu-item" class="menu">
+                            <a href="#" id="menu-link">Menu</a>
+                            <ul id="submenu" class="submenu">
+                                <li>
+                                    <a href="{% url 'coffee_list' %}"
+                                        >Nabídka Kávy</a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="{% url 'snack_list' %}"
+                                        >Nabídka Občerstvení</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{% url 'reservations' %}">Rezervace</a>
+                        </li>
+                        <li><a href="{% url 'location' %}">Poloha</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <h1>Rezervace</h1>
+            <form method="post">
+                {% csrf_token %} {{ form.as_p }}
+                <button type="submit">Rezervovat</button>
+            </form>
+        </main>
+        <footer>&copy; 2023 Kralovska Kava</footer>
+    </body>
+</html>

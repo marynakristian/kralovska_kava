@@ -1,0 +1,304 @@
+/* Основные стили */
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #ffffff;
+    color: black;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .logo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+nav .menu-container {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    position: relative;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: "Georgia", serif;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #a37310;
+}
+
+.logo {
+    color: #a37310;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-family: "Georgia", serif;
+}
+
+.logo img {
+    margin-left: 10px;
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 10000;
+    min-width: 200px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav ul li ul li {
+    float: none;
+    width: 100%;
+}
+
+nav ul li ul li a {
+    padding: 12px 16px;
+    text-align: left;
+    white-space: nowrap;
+    color: black;
+    font-family: "Georgia", serif;
+}
+
+nav ul li ul li a:hover {
+    background-color: #f1f1f1;
+}
+
+nav ul li:hover > ul {
+    display: block;
+}
+
+main {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 40px);
+    display: flex;
+    justify-content: flex-start; /* Изменено с center на flex-start */
+    align-items: center;
+    padding-left: 20px; /* Добавлено для небольшого отступа слева */
+}
+
+.alupigus {
+    font-size: 48px;
+    margin: 0;
+    padding: 20px 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.description {
+    font-size: 24px;
+    margin: 0;
+    padding: 10px 0;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.Background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.text-container {
+    z-index: 1; /* Чтобы текст был над изображением */
+    max-width: 40%; /* Ограничиваем ширину контейнера текста */
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #9d6c10;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #714e0d;
+}
+
+label {
+    font-weight: bold;
+}
+
+.review-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.review-form h2 {
+    margin-bottom: 20px;
+    font-family: "Georgia", serif;
+    color: #a37310;
+}
+
+.review-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-form form input,
+.review-form form select,
+.review-form form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: "Georgia", serif;
+}
+
+.review-form form button {
+    padding: 10px;
+    background-color: #a37310;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Georgia", serif;
+}
+
+.review-form form button:hover {
+    background-color: #714e0d;
+}
+
+.reviews-container {
+    text-align: center;
+    overflow: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.reviews-container h2 {
+    color: #a37310;
+}
+
+.reviews-wrapper {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+}
+
+.review {
+    min-width: 250px;
+    max-width: 250px;
+    margin: 0 10px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    scroll-snap-align: start;
+}
+
+.review strong {
+    color: #a37310;
+    font-family: “Georgia”, serif;
+    font-size: 16px;
+}
+
+.review p {
+    margin: 5px 0;
+    font-family: “Georgia”, serif;
+}
+
+.star-rating {
+    display: inline-block;
+}
+
+.star-rating .star {
+    font-size: 20px;
+    color: #ffcc00;
+}
+
+footer {
+    background-color: #7d4b00;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+}
