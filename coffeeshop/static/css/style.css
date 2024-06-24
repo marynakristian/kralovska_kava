@@ -84,6 +84,7 @@ nav ul li a:hover {
     margin-left: 10px;
 }
 
+/* Стили для выпадающего меню */
 nav ul li ul {
     display: none;
     position: absolute;
@@ -130,9 +131,9 @@ main {
     width: 100%;
     height: calc(100vh - 40px);
     display: flex;
-    justify-content: flex-start; /* Изменено с center на flex-start */
+    justify-content: flex-start;
     align-items: center;
-    padding-left: 20px; /* Добавлено для небольшого отступа слева */
+    padding-left: 20px;
 }
 
 .alupigus {
@@ -147,6 +148,7 @@ main {
     margin: 0;
     padding: 10px 0;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    color: white;
 }
 
 .Background-image {
@@ -162,45 +164,11 @@ main {
 }
 
 .text-container {
-    z-index: 1; /* Чтобы текст был над изображением */
-    max-width: 40%; /* Ограничиваем ширину контейнера текста */
+    z-index: 1;
+    max-width: 40%;
 }
 
-form {
-    background-color: #fff;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-input[type="text"],
-input[type="email"],
-input[type="number"],
-button {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    background-color: #9d6c10;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #714e0d;
-}
-
-label {
-    font-weight: bold;
-}
-
+/* Стили для формы отзывов */
 .review-form {
     background-color: #fff;
     padding: 20px;
@@ -245,15 +213,41 @@ label {
     background-color: #714e0d;
 }
 
+/* Стили для списка отзывов */
+.reviews {
+    margin-top: 40px;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.reviews h2 {
+    margin-bottom: 20px;
+    font-family: "Georgia", serif;
+    color: #a37310;
+}
+
+.review {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.review p {
+    margin: 5px 0;
+    font-family: "Georgia", serif;
+}
+
+.review strong {
+    color: #333;
+}
+
 .reviews-container {
     text-align: center;
     overflow: hidden;
     padding: 20px;
     box-sizing: border-box;
-}
-
-.reviews-container h2 {
-    color: #a37310;
 }
 
 .reviews-wrapper {
@@ -267,32 +261,10 @@ label {
     min-width: 250px;
     max-width: 250px;
     margin: 0 10px;
-    padding: 20px;
-    background-color: #fff;
+    padding: 10px;
+    background-color: #f9f9f9;
     border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     scroll-snap-align: start;
-}
-
-.review strong {
-    color: #a37310;
-    font-family: “Georgia”, serif;
-    font-size: 16px;
-}
-
-.review p {
-    margin: 5px 0;
-    font-family: “Georgia”, serif;
-}
-
-.star-rating {
-    display: inline-block;
-}
-
-.star-rating .star {
-    font-size: 20px;
-    color: #ffcc00;
 }
 
 footer {
@@ -301,4 +273,107 @@ footer {
     text-align: center;
     padding: 10px 0;
     width: 100%;
+}
+
+/* Медиазапросы для адаптивности */
+
+/* Мобильные устройства (до 600px) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    .text-container {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .alupigus {
+        font-size: 36px;
+    }
+
+    .description {
+        color: #333;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin: 10px 0;
+    }
+
+    .text-container {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .alupigus {
+        font-size: 28px;
+    }
+
+    .description {
+        color: #333;
+        font-size: 16px;
+    }
+}
+
+/* Планшеты (от 600px до 768px) */
+@media (min-width: 600px) and (max-width: 768px) {
+    .alupigus {
+        font-size: 40px;
+    }
+
+    .description {
+        /* color: #333; */
+        font-size: 20px;
+    }
+
+    .container {
+        height: auto;
+        padding: 20px;
+    }
+
+    .text-container {
+        max-width: 70%;
+    }
+
+    .review {
+        min-width: 220px;
+        max-width: 220px;
+        margin: 0 10px;
+    }
+}
+
+/* Маленькие десктопы (от 768px до 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .alupigus {
+        font-size: 44px;
+    }
+
+    .description {
+        font-size: 22px;
+    }
+
+    .container {
+        height: auto;
+        padding: 20px;
+    }
+
+    .text-container {
+        max-width: 60%;
+    }
+
+    .review {
+        min-width: 240px;
+        max-width: 240px;
+        margin: 0 10px;
+    }
 }
