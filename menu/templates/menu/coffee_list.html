@@ -12,53 +12,59 @@
     </head>
     <body>
         <div class="wrapper">
-
-        <header>
-            <nav>
-                <div class="logo">
-                    Kralovska Kava
-                    <img src="{% static 'img/Vector.svg' %}" alt="Logo" />
-                </div>
-                <div class="menu-container">
-                    <ul>
-                        <li><a href="{% url 'home' %}">O nás</a></li>
-                        <li id="menu-item" class="menu">
-                            <a href="#" id="menu-link">Menu</a>
-                            <ul id="submenu" class="submenu">
-                                <li>
-                                    <a href="{% url 'coffee_list' %}"
-                                        >Nabídka Kávy</a
-                                    >
-                                </li>
-                                <li>
-                                    <a href="{% url 'snack_list' %}"
-                                        >Nabídka Občerstvení</a
-                                    >
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="{% url 'reservations' %}">Rezervace</a>
-                        </li>
-                        <li><a href="{% url 'location' %}">Poloha</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <main>
-            <h1>Nabídka Kávy</h1>
-            <div class="coffee-list">
-                {% for coffee in coffees %}
-                <div class="coffee-item">
-                    <img src="{{ coffee.image.url }}" alt="{{ coffee.name }}" />
-                    <h2>{{ coffee.name }}</h2>
-                    <p>{{ coffee.description }}</p>
-                    <p>Cena: {{ coffee.price }} CZK</p>
-                </div>
-                {% endfor %}
-            </div>
-        </main>
-        <footer>&copy; 2023 Kralovska Kava</footer>
-        <div>
+            <header>
+                <nav>
+                    <div class="logo">
+                        Kralovska Kava
+                        <img src="{% static 'img/Vector.svg' %}" alt="Logo" />
+                    </div>
+                    <div class="menu-container">
+                        <ul>
+                            <li><a href="{% url 'home' %}">O nás</a></li>
+                            <li id="menu-item" class="menu">
+                                <a href="#" id="menu-link">Menu</a>
+                                <ul id="submenu" class="submenu">
+                                    <li>
+                                        <a href="{% url 'coffee_list' %}"
+                                            >Nabídka Kávy</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'snack_list' %}"
+                                            >Nabídka Občerstvení</a
+                                        >
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{% url 'reservations' %}">Rezervace</a>
+                            </li>
+                            <li><a href="{% url 'location' %}">Poloha</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <main>
+                <h1>Nabídka Kávy</h1>
+                <ul>
+                    {% for coffee in coffees %}
+                    <li>
+                        <h2>{{ coffee.name }}</h2>
+                        <img
+                            src="{{ coffee.image.url }}"
+                            alt="{{ coffee.name }}" />
+                        <p>{{ coffee.description }}</p>
+                        <p><strong>Cena:</strong> {{ coffee.price }} Kč</p>
+                        <p><strong>Původ:</strong> {{ coffee.origin }}</p>
+                        <p>
+                            <strong>Stupeň pražení:</strong>
+                            {{coffee.roast_level}}
+                        </p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </main>
+            <footer>&copy; 2024 Kralovska Kava</footer>
+        </div>
     </body>
 </html>

@@ -1,20 +1,29 @@
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
-from .models import Review
+from .models import Coffee, Review
 from .forms import ReservationForm, ReviewForm
 from datetime import datetime
 
 
 def home(request):
-    if request.method == "POST":
+    form = ReviewForm()
+    # Выбираем последние 4 отзыва, отсортированные по дате создания
+    reviews = Review.objects.all().order_by('-review_date')[:4]
+    return render(request, 'menu/home.html', {'form': form, 'reviews': reviews})
+
+def submit_review(request):
+    if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
             form.save()
-    else:
-        form = ReviewForm()
-    
-    reviews = Review.objects.all().order_by('-review_date')[:4] 
-
-    return render(request, 'menu/home.html', {'form': form, 'reviews': reviews})
+            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                return JsonResponse({'success': True})
+            else:
+                return redirect('home')
+        else:
+            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                return JsonResponse({'success': False, 'errors': form.errors})
+    return redirect('home')
 
 def review_list(request):
     reviews = Review.objects.all().order_by('-id')[:4]
@@ -22,7 +31,8 @@ def review_list(request):
     return render(request, 'menu/review_list.html', context)
 
 def coffee_list(request):
-    return render(request, 'menu/coffee_list.html')
+    coffees = Coffee.objects.all()
+    return render(request, 'menu/coffee_list.html', {'coffees': coffees})
 
 def snack_list(request):
     return render(request, 'menu/snack_list.html')

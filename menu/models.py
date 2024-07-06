@@ -13,19 +13,22 @@ class Review(models.Model):
         return self.name
 
 class Coffee(models.Model):
-    name = models.CharField(max_length=200)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    name = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField(upload_to='coffee_images/', blank=True, null=True)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    image = models.ImageField(upload_to='coffees/')
+    origin = models.CharField(max_length=100, blank=True, null=True)
+    roast_level = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return self.name
 
 class Snack(models.Model):
-    name = models.CharField(max_length=200)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    name = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField(upload_to='snack_images/', blank=True, null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    image = models.ImageField(upload_to='desserts/')
+    ingredients = models.CharField(max_length=255, blank=True, null=True)  # Ингредиенты
 
     def __str__(self):
         return self.name
