@@ -46,20 +46,22 @@
             </header>
             <main>
                 <h1>Nabídka Kávy</h1>
-                <ul>
+                <ul class="coffee-list">
                     {% for coffee in coffees %}
-                    <li>
-                        <h2>{{ coffee.name }}</h2>
+                    <li class="coffee-item">
                         <img
                             src="{{ coffee.image.url }}"
                             alt="{{ coffee.name }}" />
-                        <p>{{ coffee.description }}</p>
-                        <p><strong>Cena:</strong> {{ coffee.price }} Kč</p>
-                        <p><strong>Původ:</strong> {{ coffee.origin }}</p>
-                        <p>
-                            <strong>Stupeň pražení:</strong>
-                            {{coffee.roast_level}}
-                        </p>
+                        <div>
+                            <h2>{{ coffee.name }}</h2>
+                            <p>{{ coffee.description }}</p>
+                            <p><strong>Cena:</strong> {{ coffee.price }} Kč</p>
+                            <p><strong>Původ:</strong> {{ coffee.origin }}</p>
+                            <p>
+                                <strong>Stupeň pražení:</strong>
+                                {{coffee.roast_level}}
+                            </p>
+                        </div>
                     </li>
                     {% endfor %}
                 </ul>
