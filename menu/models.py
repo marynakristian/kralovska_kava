@@ -26,9 +26,19 @@ class Coffee(models.Model):
 class Snack(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+    ingredients = models.TextField()
+    image = models.ImageField(upload_to='snacks/')
+
+    def __str__(self):
+        return self.name
+
+class Dessert(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+    ingredients = models.TextField()
     image = models.ImageField(upload_to='desserts/')
-    ingredients = models.CharField(max_length=255, blank=True, null=True)  # Ингредиенты
 
     def __str__(self):
         return self.name

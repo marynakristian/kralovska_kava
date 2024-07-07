@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
-from .models import Coffee, Review
+from .models import Coffee, Review, Dessert, Snack
 from .forms import ReservationForm, ReviewForm
 from datetime import datetime
 
@@ -35,8 +35,8 @@ def coffee_list(request):
     return render(request, 'menu/coffee_list.html', {'coffees': coffees})
 
 def snack_list(request):
-    return render(request, 'menu/snack_list.html')
-
+    snacks = Snack.objects.all()
+    return render(request, 'menu/snack_list.html', {'snacks': snacks})
 
 def location(request):
     return render(request, 'menu/location.html')
