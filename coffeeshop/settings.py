@@ -24,6 +24,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost', cast=Csv())
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.example.com'  # SMTP сервер вашего провайдера
+EMAIL_PORT = 587  # или 465 для SSL
+EMAIL_USE_TLS = True  # или EMAIL_USE_SSL = True для SSL
+EMAIL_HOST_USER = 'your-email@example.com'  # Ваша почта
+EMAIL_HOST_PASSWORD = 'your-email-password'  # Пароль от почты
+DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

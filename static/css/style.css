@@ -134,7 +134,7 @@ main {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     margin: 40px auto;
     max-width: 900px;
-    font-family: “Georgia”, serif;
+    font-family: "Georgia", serif;
     text-align: center;
 }
 
@@ -189,7 +189,6 @@ main {
     padding: 20px 0;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
-
 .description {
     font-size: 24px;
     margin: 0;
@@ -345,17 +344,6 @@ main {
     font-size: 20px;
 }
 
-.review .star-rating {
-    direction: ltr;
-    display: inline-block;
-}
-
-.review .star-rating .rating-star {
-    font-size: 20px;
-    color: gold;
-    display: inline-block;
-}
-
 .review strong {
     font-size: 1.2em;
 }
@@ -363,45 +351,6 @@ main {
 .review-date {
     color: gray;
     font-size: 0.9em;
-}
-
-.rating-star {
-    font-size: 2em;
-    cursor: pointer;
-    color: grey;
-}
-
-.rating-star.selected {
-    color: gold;
-}
-
-.star-rating {
-    direction: rtl;
-    font-size: 20px;
-}
-
-.star-rating input {
-    display: none;
-}
-
-.star-rating label {
-    color: #ddd;
-    cursor: pointer;
-    font-size: 30px;
-    padding: 0;
-    text-shadow: 1px 1px 1px #bbb;
-    transition: all 0.2s;
-}
-
-.star-rating input:checked ~ label,
-.star-rating input:checked ~ label ~ label {
-    color: #ffc107;
-    text-shadow: 1px 1px 1px #c60;
-}
-
-.star-rating label:hover,
-.star-rating label:hover ~ label {
-    color: #ffea00;
 }
 
 footer {

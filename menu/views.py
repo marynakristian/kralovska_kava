@@ -5,6 +5,7 @@ from .forms import ReservationForm, ReviewForm
 from datetime import datetime
 
 
+
 def home(request):
     form = ReviewForm()
     reviews = Review.objects.all().order_by('-review_date')[:4]
@@ -50,10 +51,29 @@ def reservations(request):
         form = ReservationForm(request.POST)
         if form.is_valid():
             form.save()
+            print("Reservation saved successfully")
             return redirect('reservation_success')
+        else:
+            print("Form is not valid:", form.errors)
     else:
         form = ReservationForm()
     return render(request, 'menu/reservations.html', {'form': form})
+
+def reservation_success(request):
+    return render(request, 'menu/reservation_success.html')
+
+def reservation_view(request):
+    if request.method == 'POST':
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print("Reservation saved successfully")
+            return redirect('reservation_success')
+        else:
+            print("Form is not valid:", form.errors)
+    else:
+        form = ReservationForm()
+    return render(request, 'reservations.html', {'form': form})
 
 def reservation_success(request):
     return render(request, 'menu/reservation_success.html')

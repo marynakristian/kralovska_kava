@@ -4,8 +4,9 @@ from django.utils import timezone
 
     
 class Review(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=100)
     comment = models.TextField()
+    rating = models.IntegerField(null=True, blank=True)  # Сделали поле необязательным
     review_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -51,4 +52,4 @@ class Reservation(models.Model):
     number_of_people = models.IntegerField()
 
     def __str__(self):
-        return f"{self.name} - {self.date} at {self.time}"
+        return f"Reservation for {self.name} on {self.date} at {self.time}"

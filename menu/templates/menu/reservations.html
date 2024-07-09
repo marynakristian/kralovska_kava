@@ -43,39 +43,7 @@
             <main>
                 <h1>Rezervace</h1>
                 <form method="post">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="jmeno">Jméno:</label>
-                        <input type="text" id="jmeno" name="jmeno" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="telefon">Telefon:</label>
-                        <input
-                            type="tel"
-                            id="telefon"
-                            name="telefon"
-                            required />
-                    </div>
-                    <div class="form-group">
-                        <label for="datum">Datum:</label>
-                        <input type="date" id="datum" name="datum" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="cas">Čas:</label>
-                        <input type="time" id="cas" name="cas" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="pocet_osob">Počet osob:</label>
-                        <input
-                            type="number"
-                            id="pocet_osob"
-                            name="pocet_osob"
-                            required />
-                    </div>
+                    {% csrf_token %} {{ form.as_p }}
                     <button type="submit">Rezervovat</button>
                 </form>
             </main>
