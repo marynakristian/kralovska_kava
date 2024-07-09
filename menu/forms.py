@@ -21,9 +21,4 @@ class ReservationForm(forms.ModelForm):
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = ['name', 'rating', 'comment']
-        labels = {
-            'name': 'Jméno',
-            'rating': 'Hodnocení',
-            'comment': 'Komentář',
-        }
+        fields = ['name', 'comment']

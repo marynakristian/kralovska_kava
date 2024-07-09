@@ -1,22 +1,33 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const stars = document.querySelectorAll(".rating-star");
-    stars.forEach((star) => {
-        star.addEventListener("click", function () {
-            stars.forEach((s) => s.classList.remove("selected"));
-            this.classList.add("selected");
-            let value = this.getAttribute("data-value");
-            // Создаем скрытое поле для передачи рейтинга в форме
-            let ratingInput = document.createElement("input");
-            ratingInput.type = "hidden";
-            ratingInput.name = "rating";
-            ratingInput.value = value;
-            let form = this.closest("form");
-            let existingInput = form.querySelector('input[name="rating"]');
-            if (existingInput) {
-                existingInput.value = value;
+$(document).ready(function () {
+    $(".rating-star").on("click", function () {
+        var rating = $(this).data("value");
+        $("#rating-input").val(rating);
+        $(".rating-star").each(function (index) {
+            if (index < rating) {
+                $(this).addClass("selected");
             } else {
-                form.appendChild(ratingInput);
+                $(this).removeClass("selected");
             }
+        });
+    });
+
+    $("#review-form").on("submit", function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: $(this).attr("action"),
+            data: $(this).serialize(),
+            success: function (response) {
+                if (response.success) {
+                    // Перезагрузить страницу после успешной отправки отзыва
+                    location.reload();
+                } else {
+                    alert("There was an error: " + response.errors);
+                }
+            },
+            error: function (response) {
+                alert("An error occurred. Please try again.");
+            },
         });
     });
 });

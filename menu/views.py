@@ -7,7 +7,6 @@ from datetime import datetime
 
 def home(request):
     form = ReviewForm()
-    # Выбираем последние 4 отзыва, отсортированные по дате создания
     reviews = Review.objects.all().order_by('-review_date')[:4]
     return render(request, 'menu/home.html', {'form': form, 'reviews': reviews})
 
@@ -23,7 +22,9 @@ def submit_review(request):
         else:
             if request.headers.get('x-requested-with') == 'XMLHttpRequest':
                 return JsonResponse({'success': False, 'errors': form.errors})
+            return render(request, 'menu/home.html', {'form': form, 'errors': form.errors})
     return redirect('home')
+
 
 def review_list(request):
     reviews = Review.objects.all().order_by('-id')[:4]

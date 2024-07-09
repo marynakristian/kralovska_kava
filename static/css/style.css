@@ -189,6 +189,7 @@ main {
     padding: 20px 0;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
+
 .description {
     font-size: 24px;
     margin: 0;
@@ -245,7 +246,7 @@ main {
     color: #6a4e29;
 }
 
-.review-form input[type="“text”"],
+.review-form input[type="text"],
 .review-form textarea {
     width: 100%;
     padding: 10px;
@@ -344,6 +345,17 @@ main {
     font-size: 20px;
 }
 
+.review .star-rating {
+    direction: ltr;
+    display: inline-block;
+}
+
+.review .star-rating .rating-star {
+    font-size: 20px;
+    color: gold;
+    display: inline-block;
+}
+
 .review strong {
     font-size: 1.2em;
 }
@@ -354,14 +366,42 @@ main {
 }
 
 .rating-star {
+    font-size: 2em;
     cursor: pointer;
-    font-size: 2rem;
-    color: gray;
+    color: grey;
 }
 
-.rating-star.selected,
-.review .rating-star {
+.rating-star.selected {
     color: gold;
+}
+
+.star-rating {
+    direction: rtl;
+    font-size: 20px;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    color: #ddd;
+    cursor: pointer;
+    font-size: 30px;
+    padding: 0;
+    text-shadow: 1px 1px 1px #bbb;
+    transition: all 0.2s;
+}
+
+.star-rating input:checked ~ label,
+.star-rating input:checked ~ label ~ label {
+    color: #ffc107;
+    text-shadow: 1px 1px 1px #c60;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #ffea00;
 }
 
 footer {
@@ -497,7 +537,6 @@ footer {
         max-width: 90%;
         text-align: center;
     }
-
     .alupigus {
         font-size: 36px;
     }
@@ -556,7 +595,6 @@ footer {
     .description {
         font-size: 20px;
     }
-
     .container {
         height: auto;
         padding: 20px;
@@ -593,7 +631,6 @@ footer {
     .description {
         font-size: 22px;
     }
-
     .container {
         height: auto;
         padding: 20px;

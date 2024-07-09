@@ -5,7 +5,6 @@ from django.utils import timezone
     
 class Review(models.Model):
     name = models.CharField(max_length=255)
-    rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
     comment = models.TextField()
     review_date = models.DateTimeField(auto_now_add=True)
 
