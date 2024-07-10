@@ -1,5 +1,7 @@
 from django import forms
 from .models import  Reservation, Review
+from datetime import time as datetime_time
+
 
 
 class ReservationForm(forms.ModelForm):
@@ -22,15 +24,24 @@ class ReservationForm(forms.ModelForm):
             'date': 'Vyberte datum vaší rezervace.',
             'time': 'Vyberte čas vaší rezervace.'
         }
+
     def clean(self):
         cleaned_data = super().clean()
         date = cleaned_data.get('date')
         time = cleaned_data.get('time')
 
-        # Add your validation logic here (e.g., checking for availability)
-        if Reservation.objects.filter(date=date, time=time).count() >= 10:  # Example: no more than 10 reservations at the same time
-            raise forms.ValidationError("Na vybraný čas jsou všechna místa již obsazena.")
-        
+        if date and time:
+            # Валидация времени: разрешено только с 9 утра до 8 вечера
+            if time < datetime_time(hour=9, minute=0):
+                raise forms.ValidationError("Rezervace je možná pouze od 9:00.")
+            elif time >= datetime_time(hour=20, minute=0):
+                raise forms.ValidationError("Rezervace je možná pouze do 20:00.")
+
+            # Проверка наличия бронирований на выбранное время
+            reservations_count = Reservation.objects.filter(date=date, time=time).count()
+            if reservations_count >= 10:
+                raise forms.ValidationError("Na vybraný čas jsou všechna místa již obsazena.")
+
         return cleaned_data
 
 

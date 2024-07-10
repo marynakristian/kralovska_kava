@@ -21,15 +21,20 @@
                     <div class="menu-container">
                         <ul>
                             <li><a href="{% url 'home' %}">O nás</a></li>
-                            <li>
-                                <a href="{% url 'coffee_list' %}"
-                                    >Nabídka Kávy</a
-                                >
-                            </li>
-                            <li>
-                                <a href="{% url 'snack_list' %}"
-                                    >Nabídka Občerstvení</a
-                                >
+                            <li id="menu-item" class="menu">
+                                <a href="#" id="menu-link">Menu</a>
+                                <ul id="submenu" class="submenu">
+                                    <li>
+                                        <a href="{% url 'coffee_list' %}"
+                                            >Nabídka Kávy</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'snack_list' %}"
+                                            >Nabídka Občerstvení</a
+                                        >
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="{% url 'reservations' %}">Rezervace</a>
@@ -40,13 +45,9 @@
                 </nav>
             </header>
             <main>
-                <div class="container">
-                    <h1>Rezervace Úspěšná</h1>
-                    <p>
-                        Děkujeme za vaši rezervaci. Těšíme se na vaši návštěvu!
-                    </p>
-                    <a href="{% url 'home' %}">Zpět na domovskou stránku</a>
-                </div>
+                <h1>Rezervace Úspěšná</h1>
+                <p>Děkujeme za vaši rezervaci. Těšíme se na vaši návštěvu!</p>
+                <a href="{% url 'home' %}">Zpět na domovskou stránku</a>
             </main>
             <footer>&copy; 2024 Kralovska Kava</footer>
         </div>

@@ -11,11 +11,12 @@ class SnackAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'description')
     search_fields = ('name', 'ingredients')
 
+@admin.register(Reservation)
 class ReservationAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'phone', 'date', 'time', 'number_of_people')
-    list_filter = ('date', 'time')
     search_fields = ('name', 'email', 'phone')
 
-admin.site.register(Reservation, ReservationAdmin)
+
+
 admin.site.register(Coffee, CoffeeAdmin)
 admin.site.register(Snack, SnackAdmin)

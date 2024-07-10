@@ -46,10 +46,10 @@ class Dessert(models.Model):
 class Reservation(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(max_length=20)
     date = models.DateField()
     time = models.TimeField()
     number_of_people = models.IntegerField()
 
     def __str__(self):
-        return f"Reservation for {self.name} on {self.date} at {self.time}"
+        return f"{self.name} - {self.date} {self.time}"

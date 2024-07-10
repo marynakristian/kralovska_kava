@@ -3,6 +3,10 @@ from django.shortcuts import redirect, render
 from .models import Coffee, Review, Dessert, Snack
 from .forms import ReservationForm, ReviewForm
 from datetime import datetime
+from rest_framework import viewsets
+from .models import Reservation
+from .serializers import ReservationSerializer
+
 
 
 
@@ -77,3 +81,7 @@ def reservation_view(request):
 
 def reservation_success(request):
     return render(request, 'menu/reservation_success.html')
+
+class ReservationViewSet(viewsets.ModelViewSet):
+    queryset = Reservation.objects.all()
+    serializer_class = ReservationSerializer
