@@ -54,7 +54,6 @@ REST_FRAMEWORK = {
 }
 
 
-TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 
 MIDDLEWARE = [
@@ -109,9 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'cs'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'GMT'
 
 USE_I18N = True
 
