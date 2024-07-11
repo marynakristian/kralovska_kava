@@ -19,7 +19,6 @@ $(document).ready(function () {
             data: $(this).serialize(),
             success: function (response) {
                 if (response.success) {
-                    // Перезагрузить страницу после успешной отправки отзыва
                     location.reload();
                 } else {
                     alert("There was an error: " + response.errors);

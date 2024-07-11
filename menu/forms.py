@@ -31,13 +31,12 @@ class ReservationForm(forms.ModelForm):
         time = cleaned_data.get('time')
 
         if date and time:
-            # Валидация времени: разрешено только с 9 утра до 8 вечера
             if time < datetime_time(hour=9, minute=0):
                 raise forms.ValidationError("Rezervace je možná pouze od 9:00.")
             elif time >= datetime_time(hour=20, minute=0):
                 raise forms.ValidationError("Rezervace je možná pouze do 20:00.")
 
-            # Проверка наличия бронирований на выбранное время
+
             reservations_count = Reservation.objects.filter(date=date, time=time).count()
             if reservations_count >= 10:
                 raise forms.ValidationError("Na vybraný čas jsou všechna místa již obsazena.")
